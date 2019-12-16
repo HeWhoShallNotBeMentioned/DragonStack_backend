@@ -1,17 +1,28 @@
-const Generation = require('./generation');
+const GenerationEngine = require('./engine');
 
-const generation = new Generation();
+const engine = new GenerationEngine();
 
-console.log('generation', generation)
+engine.start();
 
-const oopty = generation.newDragon()
 
-console.log('oopty', oopty)
+setTimeout(() => {
+  engine.stop()
+}, 6000)
 
-setTimeout(()=> {
-  const bloop =  generation.newDragon({nickname: "bloop"})
-  console.log("bloop", bloop)
-}, 15000);
+// const Generation = require('./generation');
+
+// const generation = new Generation();
+
+// console.log('generation', generation)
+
+// const oopty = generation.newDragon()
+
+// console.log('oopty', oopty)
+
+// setTimeout(()=> {
+//   const bloop =  generation.newDragon()
+//   console.log("bloop", bloop)
+// }, 3000);
 
 //const Dragon = require('./dragon')
 
