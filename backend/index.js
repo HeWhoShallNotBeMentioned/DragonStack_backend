@@ -1,13 +1,21 @@
+const express = require('express');
+
 const GenerationEngine = require('./engine');
 
+const app = express();
 const engine = new GenerationEngine();
+const port = 3000
 
 engine.start();
 
+app.get('/dragon/new', (req, res) => {
+  res.json({dragon: engine.generation.newDragon() })
+})
 
-setTimeout(() => {
-  engine.stop()
-}, 6000)
+app.listen(port, () => {
+  console.log("backend server is connected port " + port)
+})
+
 
 // const Generation = require('./generation');
 
