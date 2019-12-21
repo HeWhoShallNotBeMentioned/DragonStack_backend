@@ -1,4 +1,4 @@
-const Generation = require("./generation");
+const Generation = require('./index.js');
 
 class GenerationEngine {
   constructor() {
@@ -10,17 +10,19 @@ class GenerationEngine {
     this.buildNewGeneration();
   }
 
-  stop(){
+  stop() {
     clearTimeout(this.timer);
   }
 
-  buildNewGeneration(){
+  buildNewGeneration() {
     this.generation = new Generation();
 
     console.log('new generation', this.generation);
-    
-    this.timer = setTimeout(() => this.buildNewGeneration(),
-    this.generation.expiration.getTime() - Date.now())
+
+    this.timer = setTimeout(
+      () => this.buildNewGeneration(),
+      this.generation.expiration.getTime() - Date.now()
+    );
   }
 }
 
