@@ -10,5 +10,5 @@ module.exports = {
   MINUTE,
   HOUR,
   DAY,
-  REFRESH_RATE
-}
+  REFRESH_RATE,
+};
