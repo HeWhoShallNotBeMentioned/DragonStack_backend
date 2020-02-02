@@ -2,18 +2,24 @@ const pool = require('../../databasePool');
 
 class GenerationTable {
   static storeGeneration(generation) {
-    pool.query(
-      'INSERT INTO generation(expiration) VALUES($1)',
-      [generation.expiration],
-      (error, response) => {
-        if (error) {
-          return console.error('error', error);
+    return new Promise((resolve, reject) => {
+      pool.query(
+        'INSERT INTO generation(expiration) VALUES($1) RETURNING id',
+        [generation.expiration],
+        (error, response) => {
+          if (error) {
+            return reject(error);
+          }
+
+          const generationId = response.rows[0].id;
+
+          resolve({ generationId: generationId });
+          // else {
+          //   return console.log('insert generation into db ', response);
+          // }
         }
-        // else {
-        //   return console.log('insert generation into db ', response);
-        // }
-      }
-    );
+      );
+    });
   }
 }
 
