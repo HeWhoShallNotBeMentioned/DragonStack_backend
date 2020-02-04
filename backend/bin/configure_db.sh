@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo "Configuring dragonstackdb"
 
 dropdb -U node_user dragonstackdb
