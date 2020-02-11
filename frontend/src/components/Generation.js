@@ -49,7 +49,7 @@ class Generation extends Component {
 
 
   render() {
-    console.log("state", this.state)
+    console.log("Generation state", this.state)
 
     return (<div>
 
