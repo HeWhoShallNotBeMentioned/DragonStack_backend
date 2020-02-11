@@ -8,8 +8,8 @@ class Dragon extends Component {
 
   state = { dragon: DEFAULT_DRAGON }
 
-  async componentDidMount() {
-    await this.fetchDragon();
+  componentDidMount() {
+    this.fetchDragon();
   }
 
   async fetchDragon() {
@@ -31,7 +31,13 @@ class Dragon extends Component {
     return (
       <div>
         <div>This is the Dragon Component</div>
-        <div>Dragon Id:  {this.state.dragon.dragonId}</div>
+        <span>Generation Id: {this.state.dragon.generationId}.</span>
+        <span>Dragon Id:  {this.state.dragon.dragonId}.</span>
+        {this.state.dragon.traits.map((trait, id) => {
+          return (
+            <span key={id}>{trait.traitType}-{trait.traitValue}, </span>)
+        })}
+
       </div>
     );
 
