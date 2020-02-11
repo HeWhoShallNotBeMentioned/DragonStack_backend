@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import regeneratorRuntime from "regenerator-runtime";
+import DragonAvatar from './DragonAvatar';
 
 const DEFAULT_DRAGON = { dragonId: '', birthdate: '', nickname: '', generationId: '', traits: [] }
 
@@ -28,17 +29,10 @@ class Dragon extends Component {
   render() {
     console.log("Dragon State", this.state);
 
-    return (
-      <div>
-        <div>This is the Dragon Component</div>
-        <span>Generation Id: {this.state.dragon.generationId}.</span>
-        <span>Dragon Id:  {this.state.dragon.dragonId}.</span>
-        {this.state.dragon.traits.map((trait, id) => {
-          return (
-            <span key={id}>{trait.traitType}-{trait.traitValue}, </span>)
-        })}
-
-      </div>
+    return (<div>
+      <div>Dragon Component</div>
+      <DragonAvatar dragon={this.state.dragon} />
+    </div>
     );
 
   };
