@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import regeneratorRuntime from "regenerator-runtime";
 
 const DEFAULT_GENERATION = { generationId: '', expiration: '' };
+const MINIMUM_DELAY = 3000;
 
 class Generation extends Component {
   state = {
     generation: DEFAULT_GENERATION,
   };
 
-  async componentDidMount() {
-    this.fetchGeneration();
+  timer = null;
+
+  componentDidMount() {
+    this.fetchNextGeneration();
   };
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
 
   async fetchGeneration() {
     try {
@@ -22,6 +29,24 @@ class Generation extends Component {
       console.error("Error in Generation Component fetchGeneration method.  ", error);
     }
   };
+
+  fetchNextGeneration() {
+    try {
+      this.fetchGeneration();
+
+      let delay = new Date(this.state.generation.expiration).getTime() - new Date().getTime();
+
+      if (delay < MINIMUM_DELAY) {
+        delay = MINIMUM_DELAY;
+      }
+
+      this.timer = setTimeout(() => this.fetchNextGeneration(), delay);
+    } catch (error) {
+      console.error("Error in Generation Componenet fetchNextGeneration method.   ", error);
+    }
+  }
+
+
 
   render() {
     console.log("state", this.state)
