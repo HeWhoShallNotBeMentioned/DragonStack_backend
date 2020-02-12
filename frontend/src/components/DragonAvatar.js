@@ -43,7 +43,7 @@ class DragonAvatar extends Component {
   }
 
   render() {
-    console.log("DragonAvatar props", this.props);
+    //console.log("DragonAvatar props", this.props);
 
 
 

@@ -16,6 +16,7 @@
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
+    "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.3"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ class Dragon extends Component {
   async fetchDragon() {
     try {
       const data = await (await fetch('http://localhost:3000/dragon/new')).json()
-      console.log("dragon data", data);
+      //console.log("dragon data", data);
       this.setState({ dragon: data.dragon })
 
     } catch (error) {
@@ -28,12 +28,12 @@ class Dragon extends Component {
 
 
   render() {
-    console.log("Dragon State", this.state);
+    //console.log("Dragon State", this.state);
 
     return (<div>
 
       <DragonAvatar dragon={this.state.dragon} />
-      <Button type="button" className="btn configButton" onClick={() => { this.fetchDragon() }}>New Dragon</Button>
+      <Button type="button" className="btn btn-warning" onClick={() => { this.fetchDragon() }}>New Dragon</Button>
     </div>
     );
 

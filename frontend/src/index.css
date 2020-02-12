@@ -22,5 +22,10 @@ body {
   z-index: 3;
 }
 
-
+  .btn-warning {
+  background: #050505;
+  color: aquamarine;
+  border-radius: 8%;
+  border-color: aquamarine;
+}
 

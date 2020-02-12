@@ -23,7 +23,7 @@ class Generation extends Component {
     try {
 
       const data = await (await fetch('http://localhost:3000/generation')).json();
-      console.log("generation data", data);
+      //console.log("generation data", data);
       this.setState({ generation: data.generation })
     } catch (error) {
       console.error("Error in Generation Component fetchGeneration method.  ", error);
@@ -49,7 +49,7 @@ class Generation extends Component {
 
 
   render() {
-    console.log("Generation state", this.state)
+    //console.log("Generation state", this.state)
 
     return (<div>
 
