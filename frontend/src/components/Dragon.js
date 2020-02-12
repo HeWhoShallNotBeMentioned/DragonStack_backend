@@ -31,9 +31,9 @@ class Dragon extends Component {
     console.log("Dragon State", this.state);
 
     return (<div>
-      <div>Dragon Component</div>
+
       <DragonAvatar dragon={this.state.dragon} />
-      <Button onClick={() => { this.fetchDragon() }}>New Dragon</Button>
+      <Button type="button" className="btn configButton" onClick={() => { this.fetchDragon() }}>New Dragon</Button>
     </div>
     );
 

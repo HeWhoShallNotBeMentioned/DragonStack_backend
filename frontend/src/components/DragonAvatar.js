@@ -8,7 +8,7 @@ class DragonAvatar extends Component {
 
     return (
       <div>
-        <div>This is the DragonAvatar Component</div>
+
         <span>Generation Id: {this.props.dragon.generationId}.</span>
         <span>Dragon Id:  {this.props.dragon.dragonId}.</span>
         {this.props.dragon.traits.map((trait, id) => {
