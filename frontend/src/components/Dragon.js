@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import regeneratorRuntime from "regenerator-runtime";
 import DragonAvatar from './DragonAvatar';
 
@@ -32,6 +33,7 @@ class Dragon extends Component {
     return (<div>
       <div>Dragon Component</div>
       <DragonAvatar dragon={this.state.dragon} />
+      <Button onClick={() => { this.fetchDragon() }}>New Dragon</Button>
     </div>
     );
 
