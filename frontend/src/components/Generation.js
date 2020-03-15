@@ -19,21 +19,9 @@ class Generation extends Component {
     clearTimeout(this.timer);
   }
 
-  async fetchGeneration() {
+  fetchNextGeneration() {
     try {
-
-      const data = await (await fetch('http://localhost:3000/generation')).json();
-      //console.log("generation data", data);
-
-      await this.props.dispatchGeneration(data.generation);
-    } catch (error) {
-      console.error("Error in Generation Component fetchGeneration method.  ", error);
-    }
-  };
-
-  async fetchNextGeneration() {
-    try {
-      await this.fetchGeneration();
+      this.props.fetchGeneration();
 
       let delay = new Date(this.props.generation.expiration).getTime() - new Date().getTime();
 
@@ -63,12 +51,22 @@ class Generation extends Component {
 
 const mapStateToProps = (state) => {
   const generation = state.generation;
-  return { generation: generation };
+  return { generation };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchGeneration: (generation) => { return dispatch(generationActionCreator(generation)) }
+    fetchGeneration: () => fetchGeneration(dispatch)
+  }
+}
+
+const fetchGeneration = async (dispatch) => {
+  try {
+    let data = await (await fetch('http://localhost:3000/generation')).json();
+    return dispatch(generationActionCreator(data.generation));
+
+  } catch (error) {
+    console.error("Error in Generation Component fetchGeneration method.  ", error);
   }
 }
 
