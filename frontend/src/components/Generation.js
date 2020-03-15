@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { generationActionCreator } from '../actions/generation';
+
 import regeneratorRuntime from "regenerator-runtime";
 
 
@@ -60,15 +60,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const fetchGeneration = async (dispatch) => {
-  try {
-    let data = await (await fetch('http://localhost:3000/generation')).json();
-    return dispatch(generationActionCreator(data.generation));
 
-  } catch (error) {
-    console.error("Error in Generation Component fetchGeneration method.  ", error);
-  }
-}
 
 const componentConnector = connect(mapStateToProps, mapDispatchToProps);
 

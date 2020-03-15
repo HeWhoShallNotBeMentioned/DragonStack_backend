@@ -1,8 +1,26 @@
-import { GENERATION_ACTION_TYPE } from './types.js';
+import { GENERATION } from './types.js';
 
-export const generationActionCreator = (payload) => {
-  return {
-    type: GENERATION_ACTION_TYPE,
-    generation: payload,
+
+export const fetchGeneration = async (dispatch) => {
+  dispatch({ type: GENERATION.FETCH })
+  try {
+    let data = await (await fetch('http://localhost:3000/generation')).json();
+    if (data.type === 'error') {
+      dispatch({
+        type: GENERATION.FETCH_ERROR,
+        message: data.message
+      })
+    } else {
+      return dispatch({
+        type: GENERATION.FETCH_SUCCESS,
+        generation: data.generation
+      });
+    }
+
+  } catch (error) {
+    dispatch({
+      type: GENERATION.FETCH_ERROR,
+      message: error.message
+    })
   }
 }
