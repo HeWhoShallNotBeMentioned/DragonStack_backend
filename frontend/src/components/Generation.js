@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import regeneratorRuntime from "regenerator-runtime";
 
 const DEFAULT_GENERATION = { generationId: '', expiration: '' };
@@ -49,15 +50,22 @@ class Generation extends Component {
 
 
   render() {
-    //console.log("Generation state", this.state)
+    console.log("this.props", this.props)
 
     return (<div>
 
-      <h3>Generation {this.state.generation.generationId} Expires on: </h3>
-      <h4>{new Date(this.state.generation.expiration).toString()}</h4>
+      <h3>Generation {this.props.generation.generationId} Expires on: </h3>
+      <h4>{new Date(this.props.generation.expiration).toString()}</h4>
 
     </div>)
   }
 }
 
-export default Generation;
+const mapStateToProps = (state) => {
+  const generation = state.generation;
+  return { generation: generation };
+}
+
+const componentConnector = connect(mapStateToProps);
+
+export default componentConnector(Generation);
