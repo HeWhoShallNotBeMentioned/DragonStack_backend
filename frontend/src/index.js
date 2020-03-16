@@ -7,13 +7,13 @@ import logger from 'redux-logger'
 import Generation from './components/Generation';
 import Dragon from './components/Dragon';
 
-import { generationReducer } from './reducers/index.js'
+import rootReducer from './reducers/index.js'
 import './index.css';
 
 
 
 const store = createStore(
-  generationReducer,
+  rootReducer,
   compose(
     applyMiddleware(thunk, logger),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

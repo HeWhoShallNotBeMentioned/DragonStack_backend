@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
 import regeneratorRuntime from "regenerator-runtime";
+import { connect } from 'react-redux';
+import { fetchGeneration } from '../actions/generation'
+
 
 
 const MINIMUM_DELAY = 3000;
