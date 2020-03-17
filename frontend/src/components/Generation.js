@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import regeneratorRuntime from "regenerator-runtime";
 import { connect } from 'react-redux';
-import { fetchGeneration } from '../actions/generation'
+import { fetchGeneration } from '../actions/generation';
+import fetchStates from '../reducers/fetchStates';
 
 
 
@@ -40,6 +41,14 @@ class Generation extends Component {
 
   render() {
     console.log("this.props", this.props)
+
+    // if (this.props.generation.fetching) {
+    //   return <div>...</div>
+    // }
+
+    if (this.props.generation.status === fetchStates.error) {
+      return <div>{this.props.generation.message}</div>
+    }
 
     return (<div>
 
