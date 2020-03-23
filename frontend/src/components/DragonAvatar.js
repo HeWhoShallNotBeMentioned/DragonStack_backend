@@ -45,7 +45,9 @@ class DragonAvatar extends Component {
   render() {
     //console.log("DragonAvatar props", this.props);
 
-
+    if (!this.props.dragon.dragonId) {
+      return <div></div>
+    }
 
     return (
       <div>

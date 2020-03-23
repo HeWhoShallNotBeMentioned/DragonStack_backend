@@ -3,7 +3,7 @@ import { DRAGON } from './types.js';
 export const fetchDragon = async (dispatch) => {
   dispatch({ type: DRAGON.FETCH })
   try {
-    let data = await (await fetch('http://localhost/dragon/new')).json();
+    let data = await (await fetch('http://localhost:3000/dragon/new')).json();
     if (data.type === 'error') {
       dispatch({
         type: DRAGON.FETCH_ERROR,
