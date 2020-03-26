@@ -4,7 +4,7 @@ class AccountTable {
   static storeAccount({ username, password }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        'INSERT INTO account(usernmae, password) VALUES($1, $2) RETURNING id',
+        'INSERT INTO account(username, password) VALUES($1, $2) RETURNING id',
         [username, password],
         (error, response) => {
           if (error) {
@@ -15,8 +15,8 @@ class AccountTable {
 
           resolve({ accountId: accountId });
         }
-      )
-    })
+      );
+    });
   }
 }
 
