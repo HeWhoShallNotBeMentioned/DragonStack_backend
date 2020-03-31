@@ -20,9 +20,9 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.use('/account', accountRouter);
+app.use('/account/', accountRouter);
 app.use('/dragon/', dragonRouter);
-app.use('/generation', generationRouter);
+app.use('/generation/', generationRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
