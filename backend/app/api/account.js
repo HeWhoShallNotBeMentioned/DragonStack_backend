@@ -18,7 +18,7 @@ router.post('/signup', async (req, res, next) => {
       const acctCreateResponse = await AccountTable.storeAccount({ usernameHash, passwordHash });
 
       let settingSession = await setSession({ username, res })
-      res.json({ message: 'success!' });
+      res.json(settingSession);
     } else {
       const error = new Error("This username has already been taken.")
       error.statusCode = 409;
