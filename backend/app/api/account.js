@@ -36,7 +36,8 @@ router.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
     const { account } = await AccountTable.getAccount({ usernameHash: hash(username) })
     if (account && account.passwordHash === hash(password)) {
-      let settingSession = await setSession({ username, res });
+      const { sessionId } = account;
+      let settingSession = await setSession({ username, res, sessionId });
       res.json(settingSession);
     } else {
       const error = new Error('Invalid username or password');
