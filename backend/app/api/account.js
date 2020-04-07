@@ -31,4 +31,22 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
+router.post('/login', async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const { account } = await AccountTable.getAccount({ usernameHash: hash(username) })
+    if (account && account.passwordHash === hash(password)) {
+      let settingSession = await setSession({ username, res });
+      res.json(settingSession);
+    } else {
+      const error = new Error('Invalid username or password');
+      error.status = 409;
+      throw (error);
+    }
+
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
