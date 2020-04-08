@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const AccountTable = require('../account/table');
+const Session = require('../account/session');
 const { hash } = require('../account/helper');
 const { setSession } = require('./helper');
 const router = new Router();
@@ -49,5 +50,22 @@ router.post('/login', async (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/logout', async (req, res, next) => {
+  try {
+    console.log("req.cookies----  ", req.cookies)
+    console.log("Session.parse(req.cookies.sessionString)......  ", Session.parse(req.cookies.sessionString))
+    const { username } = await Session.parse(req.cookies.sessionString)
+
+    let deletedId = await AccountTable.updateSessionId({
+      sessionId: null,
+      usernameHash: hash(username)
+    })
+    res.clearCookie('sessionString')
+    res.json({ message: 'Successful logout' });
+  } catch (error) {
+    next(error);
+  }
+})
 
 module.exports = router;
