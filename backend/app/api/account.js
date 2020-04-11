@@ -13,7 +13,7 @@ router.post('/signup', async (req, res, next) => {
     const passwordHash = hash(password);
 
     const acctCheckResponse = await AccountTable.getAccount({ usernameHash });
-    console.log("acctCheckResponse------------   ", acctCheckResponse)
+    //console.log("acctCheckResponse------------   ", acctCheckResponse)
 
     if (!acctCheckResponse.account) {
       const acctCreateResponse = await AccountTable.storeAccount({ usernameHash, passwordHash });
@@ -53,8 +53,8 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/logout', async (req, res, next) => {
   try {
-    console.log("req.cookies----  ", req.cookies)
-    console.log("Session.parse(req.cookies.sessionString)......  ", Session.parse(req.cookies.sessionString))
+    //console.log("req.cookies----  ", req.cookies)
+    //console.log("Session.parse(req.cookies.sessionString)......  ", Session.parse(req.cookies.sessionString)//)
     const { username } = await Session.parse(req.cookies.sessionString)
 
     let deletedId = await AccountTable.updateSessionId({
