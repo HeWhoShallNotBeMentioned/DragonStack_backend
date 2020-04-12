@@ -17,7 +17,7 @@ class Dragon extends Component {
     return (<div>
 
       <DragonAvatar dragon={this.props.dragon} />
-      <Button type="button" className="btn btn-warning" onClick={() => { this.props.fetchDragon() }}>New Dragon</Button>
+      <Button type="button" variant="success" onClick={() => { this.props.fetchDragon() }}>New Dragon</Button>
     </div>
     );
 
