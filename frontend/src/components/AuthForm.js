@@ -65,12 +65,12 @@ class AuthForm extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     signup: () => signup(dispatch)
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signup: ({ username, password }) => dispatch(signup({ username, password }))
+  }
+}
 
-const componentConnector = connect(null, { signup })
+const componentConnector = connect(null, mapDispatchToProps)
 
 export default componentConnector(AuthForm);
