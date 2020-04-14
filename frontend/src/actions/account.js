@@ -4,12 +4,12 @@ import { BACKEND } from '../config';
 export const signup = ({ username, password }) => async dispatch => {
   dispatch({ type: ACCOUNT.FETCH })
   try {
-    let { data } = await fetch(`${BACKEND.ADDRESS}/account/signup`, {
+    let data = await (await fetch(`${BACKEND.ADDRESS}/account/signup`, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include'
-    }).json();
+    })).json();
     console.log("data ", data)
     if (data.type === 'error') {
       dispatch({

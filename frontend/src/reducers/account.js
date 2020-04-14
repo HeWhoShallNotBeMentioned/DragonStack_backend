@@ -1,7 +1,7 @@
 import { ACCOUNT } from '../actions/types';
 import fetchStates from './fetchStates';
 
-DEFAULT_ACCOUNT = { loggedIn: false };
+const DEFAULT_ACCOUNT = { loggedIn: false };
 
 const account = (state = DEFAULT_ACCOUNT, action) => {
   switch (action.type) {
