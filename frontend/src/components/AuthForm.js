@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { signup } from '../actions/account';
+import fetchStates from '../reducers/fetchStates';
 
 class AuthForm extends Component {
 
@@ -28,10 +29,19 @@ class AuthForm extends Component {
     console.log("login this.state", this.state)
   }
 
+  get Error() {
+
+    if (this.props.account && this.props.account.status === fetchStates.error) {
+      return <div>{this.props.account.message}</div>
+    }
+  }
+
   render() {
+    console.log("AuthForm props ------  ", this.props)
     return (
 
       <div><h2>Dragon Stack</h2>
+        {this.Error}
         <form>
           <FormGroup>
             <FormControl
@@ -60,8 +70,14 @@ class AuthForm extends Component {
 
       </div>
     )
+  }
+}
 
+const mapStateToProps = (state) => {
 
+  const account = state.account;
+  return {
+    account
   }
 }
 
@@ -71,6 +87,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const componentConnector = connect(null, mapDispatchToProps)
+const componentConnector = connect(mapStateToProps, mapDispatchToProps)
 
 export default componentConnector(AuthForm);
