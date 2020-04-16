@@ -29,3 +29,4 @@ const account = (state = DEFAULT_ACCOUNT, action) => {
 }
 
 export default account;
+
