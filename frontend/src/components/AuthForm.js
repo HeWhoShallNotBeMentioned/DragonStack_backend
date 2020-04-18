@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
-import { signup } from '../actions/account';
+import { signup, login } from '../actions/account';
 import fetchStates from '../reducers/fetchStates';
 
 class AuthForm extends Component {
@@ -26,7 +26,8 @@ class AuthForm extends Component {
   }
 
   login = () => {
-    console.log("login this.state", this.state)
+    const { username, password } = this.state;
+    this.props.login({ username, password })
   }
 
   get Error() {
@@ -83,7 +84,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: ({ username, password }) => dispatch(signup({ username, password }))
+    signup: ({ username, password }) => dispatch(signup({ username, password })),
+    login: ({ username, password }) => dispatch(login({ username, password })),
   }
 }
 
