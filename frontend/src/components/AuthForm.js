@@ -63,7 +63,7 @@ class AuthForm extends Component {
           <div>
             <Button variant="success" onClick={this.login}>Sign In</Button>
             <span> or </span>
-            <Button variant="success" onClick={this.signup}>Sign Up</Button>
+            <Button variant="primary" onClick={this.signup}>Sign Up</Button>
           </div>
 
         </form>

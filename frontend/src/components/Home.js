@@ -17,7 +17,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Button variant="success" onClick={this.props.logout} className="logout-button">Logout</Button>
+        <Button variant="warning" onClick={this.props.logout} className="logout-button">Logout</Button>
         <h2>Dragon Stack</h2>
         <Generation />
         <Dragon />
