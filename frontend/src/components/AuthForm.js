@@ -8,7 +8,8 @@ class AuthForm extends Component {
 
   state = {
     username: '',
-    password: ''
+    password: '',
+    buttonClicked: false,
   }
 
   updateUsername = (event) => {
@@ -22,23 +23,25 @@ class AuthForm extends Component {
   signup = () => {
 
     const { username, password } = this.state;
-    this.props.signup({ username, password })
+    this.setState({ buttonClicked: true });
+    this.props.signup({ username, password });
   }
 
   login = () => {
     const { username, password } = this.state;
-    this.props.login({ username, password })
+    this.setState({ buttonClicked: true });
+    this.props.login({ username, password });
   }
 
   get Error() {
 
-    if (this.props.account && this.props.account.status === fetchStates.error) {
+    if (this.props.account && this.state.buttonClicked && this.props.account.status === fetchStates.error) {
       return <div>{this.props.account.message}</div>
     }
   }
 
   render() {
-    console.log("AuthForm props ------  ", this.props)
+
     return (
 
       <div><h2>Dragon Stack</h2>
