@@ -68,7 +68,7 @@ router.get('/logout', async (req, res, next) => {
   }
 })
 
-router.get('./authenticated', async (req, res, next) => {
+router.get('/authenticated', async (req, res, next) => {
   try {
     const { sessionString } = req.cookies;
     if (!sessionString || !Session.verify(sessionString)) {
