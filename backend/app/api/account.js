@@ -2,7 +2,7 @@ const { Router } = require('express');
 const AccountTable = require('../account/table');
 const Session = require('../account/session');
 const { hash } = require('../account/helper');
-const { setSession } = require('./helper');
+const { setSession, authenticatedAccount } = require('./helper');
 const router = new Router();
 
 router.post('/signup', async (req, res, next) => {
@@ -71,18 +71,9 @@ router.get('/logout', async (req, res, next) => {
 router.get('/authenticated', async (req, res, next) => {
   try {
     const { sessionString } = req.cookies;
-    if (!sessionString || !Session.verify(sessionString)) {
-      const error = new Error('Invalid session');
+    const { authenticated } = await authenticatedAccount({ sessionString });
 
-      error.statusCode = 400;
-      return next(error);
-    } else {
-      const { username, id } = Session.parse(sessionString);
-      let { account } = await AccountTable.getAccount({ usernameHash: hash(username) });
-      const authenticated = account.sessionId === id;
-      res.json({ authenticated });
-    }
-
+    res.json({ authenticated });
   } catch (error) {
     next(error)
   }
