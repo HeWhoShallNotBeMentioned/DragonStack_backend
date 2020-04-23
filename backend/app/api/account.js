@@ -4,6 +4,7 @@ const AccountDragonTable = require('../accountDragon/table');
 const Session = require('../account/session');
 const { hash } = require('../account/helper');
 const { setSession, authenticatedAccount } = require('./helper');
+const { getDragonWithTraits } = require('../dragon/helper')
 
 const router = new Router();
 
@@ -87,7 +88,13 @@ router.get('/dragons', async (req, res, next) => {
     const { account } = await authenticatedAccount({ sessionString });
 
     let { accountDragons } = await AccountDragonTable.getAccountDragons({ accountId: account.id });
-    res.json({ accountDragons });
+    let dragons = [];
+    const promises = await accountDragons.map(accountDragon => {
+      let dra = getDragonWithTraits({ dragonId: accountDragon.dragonId });
+      return dra
+    })
+    dragons = await Promise.all(promises)
+    res.json({ dragons });
 
   } catch (error) {
     next(error);
