@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const AccountTable = require('../account/table');
+const AccountDragonTable = require('../accountDragon/table');
 const Session = require('../account/session');
 const { hash } = require('../account/helper');
 const { setSession, authenticatedAccount } = require('./helper');
+
 const router = new Router();
 
 router.post('/signup', async (req, res, next) => {
@@ -76,6 +78,19 @@ router.get('/authenticated', async (req, res, next) => {
     res.json({ authenticated });
   } catch (error) {
     next(error)
+  }
+})
+
+router.get('/dragons', async (req, res, next) => {
+  try {
+    const { sessionString } = req.cookies;
+    const { account } = await authenticatedAccount({ sessionString });
+
+    let { accountDragons } = await AccountDragonTable.getAccountDragons({ accountId: account.id });
+    res.json({ accountDragons });
+
+  } catch (error) {
+    next(error);
   }
 })
 
