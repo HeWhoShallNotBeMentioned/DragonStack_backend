@@ -26,12 +26,6 @@ class Home extends Component {
   }
 }
 
-fetch('http://localhost:3000/account/dragons', {
-  credentials: 'include'
-})
-  .then(response => response.json())
-  .then(json => console.log('account dragons----------------xs ', json));
-
 const mapStateToProps = (state) => {
   const account = state.account;
   return { account };
