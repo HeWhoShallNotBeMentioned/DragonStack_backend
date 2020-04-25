@@ -93,7 +93,7 @@ router.get('/dragons', async (req, res, next) => {
       let dra = getDragonWithTraits({ dragonId: accountDragon.dragonId });
       return dra
     })
-    dragons = await Promise.all(promises)
+    dragons = await Promise.all(promises);
     res.json({ dragons });
 
   } catch (error) {
