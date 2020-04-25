@@ -66,7 +66,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchGeneration: () => fetchGeneration(dispatch)
+    fetchGeneration: () => dispatch(fetchGeneration)
   }
 }
 

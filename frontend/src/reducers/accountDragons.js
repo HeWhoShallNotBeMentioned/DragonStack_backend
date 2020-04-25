@@ -22,7 +22,7 @@ const accountDragons = (state = DEFAULT_ACCOUNT_DRAGONS, action) => {
         ...state,
         status: fetchStates.success,
         message: action.message,
-        ...action.dragons
+        dragons: action.dragons
       };
     default:
       return state;

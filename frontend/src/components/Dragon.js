@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDragon: () => fetchDragon(dispatch)
+    fetchDragon: () => dispatch(fetchDragon)
   }
 }
 
