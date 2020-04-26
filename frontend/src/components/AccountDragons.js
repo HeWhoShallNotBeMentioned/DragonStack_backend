@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchAccountDragons } from '../actions/accountDragons';
 import AccountDragonRow from './AccountDragonRow';
 
@@ -13,6 +14,7 @@ class AccountDragons extends Component {
 
     return (
       <div>
+        <Link to='/' >Home</Link>
         <h3>Account Dragons</h3>
         {
           this.props.accountDragons.dragons.map(dragon => {
