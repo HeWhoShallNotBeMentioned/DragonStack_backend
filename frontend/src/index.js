@@ -22,10 +22,13 @@ const store = createStore(
   )
 );
 
-const RedirectToAccountDragons = () => {
-  return (
-    <Redirect to={{ pathname: '/account-dragons' }} />
-  )
+const AuthRoute = (props) => {
+  if (!store.getState().account.loggedIn) {
+    return <Redirect to={{ pathname: '/' }} />
+  } else {
+    const { component, path } = props;
+    return <Route path={path} component={component} />
+  }
 }
 
 
@@ -36,8 +39,8 @@ store.dispatch(fetchAuthentiated())
         <Router history={history} >
           <Switch>
             <Route exact path='/' component={Root} />
-            <Route path="/account-dragons" component={AccountDragons} />
-            <Route path='/redirect-to-account-dragons' component={RedirectToAccountDragons} />
+            <AuthRoute path="/account-dragons" component={AccountDragons} />
+
           </Switch>
         </Router>
       </Provider>,
