@@ -27,12 +27,21 @@ router.get('/new', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    console.log("id", req.params.id);
-    console.log("Inside get dragon by id route");
+
     const dragon = await getDragonWithTraits({ dragonId: req.params.id });
     res.json(dragon);
   } catch (error) {
     console.error(error);
+    next(error)
+  }
+});
+
+router.put('/update', async (req, res, next) => {
+  try {
+    const { dragonId, nickname } = req.body;
+    const somethingNotUsed = await DragonTable.updateDragon({ dragonId, nickname });
+    res.json({ message: 'successfully updated dragon' })
+  } catch (error) {
     next(error)
   }
 })
