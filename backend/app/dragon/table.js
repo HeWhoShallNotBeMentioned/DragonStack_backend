@@ -62,7 +62,7 @@ class DragonTable {
             return reject(error);
           }
 
-          resolve();
+          resolve(response.rows[0]);
 
         }
 
