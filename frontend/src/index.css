@@ -29,6 +29,8 @@ body {
 
 }
 
-
+input[type="text"]:disabled {
+  background: #dddddd;
+}
 
 
