@@ -101,4 +101,18 @@ router.get('/dragons', async (req, res, next) => {
   }
 })
 
+router.get('/info', async (req, res, next) => {
+
+  try {
+    const { sessionString } = req.cookies;
+    const { account, username } = await authenticatedAccount({ sessionString });
+
+    res.json({ info: { balance: account.balance, username } })
+
+  } catch (error) {
+    next(error);
+  }
+
+})
+
 module.exports = router;

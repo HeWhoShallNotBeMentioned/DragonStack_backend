@@ -48,7 +48,7 @@ const authenticatedAccount = ({ sessionString }) => {
         const { username, id } = await Session.parse(sessionString);
         let { account } = await AccountTable.getAccount({ usernameHash: hash(username) });
         const authenticated = account.sessionId === id;
-        resolve({ account, authenticated });
+        resolve({ account, authenticated, username });
       }
     } catch (error) {
       error => reject(error);
