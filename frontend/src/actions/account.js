@@ -38,7 +38,7 @@ export const signup = ({ username, password }) => fetchFromAccount({
 });
 
 export const login = ({ username, password }) => fetchFromAccount({
-  endpoint: 'info',
+  endpoint: 'login',
   options: {
     method: 'POST',
     body: JSON.stringify({ username, password }),
