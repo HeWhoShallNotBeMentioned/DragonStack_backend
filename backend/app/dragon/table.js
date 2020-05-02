@@ -53,6 +53,13 @@ class DragonTable {
   }
 
   static updateDragon({ dragonId, nickname, isPublic, saleValue }) {
+    const settingsMap = { nickname, isPublic, saleValue };
+
+    Object.entries(settingsMap).filter(([settingKey, settingValue]) => {
+      console.log('settingKey  ', settingKey, "  settingValue  ", settingValue);
+
+    });
+
     return new Promise((resolve, reject) => {
       pool.query(
         `UPDATE dragon SET nickname = $1, isPublic = $2, saleValue = $3 WHERE id = $4`,
