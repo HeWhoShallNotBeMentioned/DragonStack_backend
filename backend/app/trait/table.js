@@ -12,7 +12,6 @@ class TraitTable {
             return reject(error);
           }
 
-          //const traitId = response.rows[0].id;
           resolve({ traitId: response.rows[0].id });
         }
       )
@@ -21,7 +20,7 @@ class TraitTable {
 }
 
 const data = async function getData() {
-  const testTraitId = await TraitTable.getTraitId({ traitType: 'backgroundColor', traitValue: 'black' })
+  const testTraitId = await TraitTable.getTraitId({ traitType: 'backgroundColor', traitValue: 'gold' })
 
   console.log("testTraitId", testTraitId);
 

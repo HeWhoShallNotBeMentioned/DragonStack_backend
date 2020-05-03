@@ -4,9 +4,9 @@ import regeneratorRuntime from "regenerator-runtime";
 
 const propertyMap = {
   backgroundColor: {
-    black: '#263238',
-    white: '#cfd8dc',
-    green: '#a5d6a7',
+    gold: '#ffD700',
+    red: '#933a16',
+    green: '#228B22',
     blue: '#0277bd'
   },
   build: { slender, stocky, sporty, skinny, },
