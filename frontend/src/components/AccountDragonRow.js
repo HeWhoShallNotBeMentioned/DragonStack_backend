@@ -22,8 +22,7 @@ class AccountDragonRow extends Component {
   }
 
   updateIsPublic = event => {
-    console.log("inside updateIsPublic", event.target.value)
-    this.setState({ isPublic: event.target.value });
+    this.setState({ isPublic: event.target.checked });
   }
 
   toggleEdit = () => {
