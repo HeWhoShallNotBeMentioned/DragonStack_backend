@@ -38,8 +38,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.put('/update', async (req, res, next) => {
   try {
-    const { dragonId, nickname } = req.body;
-    const somethingNotUsed = await DragonTable.updateDragon({ dragonId, nickname });
+    const { dragonId, nickname, isPublic, saleValue } = req.body;
+    const somethingNotUsed = await DragonTable.updateDragon({ dragonId, nickname, isPublic, saleValue });
     res.json({ message: 'successfully updated dragon' })
   } catch (error) {
     next(error)
