@@ -55,19 +55,19 @@ class DragonTable {
   static updateDragon({ dragonId, nickname, isPublic, saleValue }) {
     const settingsMap = { nickname, isPublic, saleValue };
 
-    const validQueries = Object.entries(settingsMap).filter(([settingKey, settingValue]) => {
+    let validQueries = Object.entries(settingsMap).filter(([settingKey, settingValue]) => {
 
       if (settingValue !== undefined) {
         return new Promise((resolve, reject) => {
           pool.query(
-            `UPDATE dragon "${settingKey}" = $1 WHERE id = $2`,
+            `UPDATE dragon SET "${settingKey}" = $1 WHERE id = $2`,
             [settingValue, dragonId],
             (error, response) => {
 
               if (error) {
                 return reject(error);
               }
-              resolve;
+              resolve();
             }
           )
         });
@@ -78,9 +78,9 @@ class DragonTable {
 }
 
 
-// DragonTable.updateDragon({ dragonId: 1, nickname: 'fooby' })
-//   .then(() => console.log('successfully updated dragon'))
-//   .catch(error => console.error('error', error));
+DragonTable.updateDragon({ dragonId: 1, nickname: 'fooby' })
+  .then(() => console.log('successfully updated dragon'))
+  .catch(error => console.error('error', error));
 
 module.exports = DragonTable;
 

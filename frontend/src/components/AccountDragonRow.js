@@ -8,11 +8,22 @@ class AccountDragonRow extends Component {
 
   state = {
     nickname: this.props.dragon.nickname,
+    isPublic: this.props.dragon.isPublic,
+    saleValue: this.props.dragon.saleValue,
     edit: false
   }
 
   updateNickname = event => {
     this.setState({ nickname: event.target.value });
+  }
+
+  updateSaleValue = event => {
+    this.setState({ saleValue: event.target.value });
+  }
+
+  updateIsPublic = event => {
+    console.log("inside updateIsPublic", event.target.value)
+    this.setState({ isPublic: event.target.value });
   }
 
   toggleEdit = () => {
@@ -26,7 +37,9 @@ class AccountDragonRow extends Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           dragonId: this.props.dragon.dragonId,
-          nickname: this.state.nickname
+          nickname: this.state.nickname,
+          saleValue: this.state.saleValue,
+          isPublic: this.state.isPublic
         })
       })
 
@@ -70,12 +83,32 @@ class AccountDragonRow extends Component {
           disabled={!this.state.edit}
         />
         <DragonAvatar dragon={this.props.dragon} />
-        {
-          this.state.edit
-            ? <span> {this.SaveButton}{'    '}
-              {this.CancelButton} </span>
-            : this.EditButton
-        }
+        <div>
+          <span> Sale Value:{'  '} </span>
+          <input
+            type="number"
+            value={this.state.saleValue}
+            onChange={this.updateSaleValue}
+            disabled={!this.state.edit}
+          />
+          {'   '}
+          <span>
+            Public: {'   '}
+            <input
+              type="checkbox"
+              disabled={!this.state.edit}
+              onChange={this.updateIsPublic}
+              checked={this.state.isPublic}
+            />
+          </span>
+          <br />
+          {
+            this.state.edit
+              ? <span> {this.SaveButton}{'    '}
+                {this.CancelButton} </span>
+              : this.EditButton
+          }
+        </div>
       </div>
     )
   }
