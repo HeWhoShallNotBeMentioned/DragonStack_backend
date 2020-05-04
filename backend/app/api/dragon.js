@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const DragonTable = require('../dragon/table');
-const { getDragonWithTraits } = require('../dragon/helper');
+const { getDragonWithTraits, getPublicDragons } = require('../dragon/helper');
 const accountDragonTable = require('../accountDragon/table');
 const { authenticatedAccount } = require('./helper');
 
@@ -25,16 +25,7 @@ router.get('/new', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
-  try {
 
-    const dragon = await getDragonWithTraits({ dragonId: req.params.id });
-    res.json(dragon);
-  } catch (error) {
-    console.error(error);
-    next(error)
-  }
-});
 
 router.put('/update', async (req, res, next) => {
   try {
@@ -45,5 +36,27 @@ router.put('/update', async (req, res, next) => {
     next(error)
   }
 })
+
+router.get('/public-dragons', async (req, res, next) => {
+  try {
+    const dragons = await getPublicDragons();
+    console.log("dragons", dragons)
+    res.json(dragons);
+
+  } catch (error) {
+    next(error);
+  }
+})
+
+router.get('/:id', async (req, res, next) => {
+  try {
+
+    const { dragon } = await getDragonWithTraits({ dragonId: req.params.id });
+    res.json({ dragon });
+  } catch (error) {
+    console.error(error);
+    next(error)
+  }
+});
 
 module.exports = router;

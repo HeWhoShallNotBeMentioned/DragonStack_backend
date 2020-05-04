@@ -29,6 +29,35 @@ const getDragonWithTraits = async ({ dragonId }) => {
   }
 }
 
+const getPublicDragons = async () => {
+  try {
+    let publicDragonPromises = await new Promise((resolve, reject) => {
+      pool.query(
+        `SELECT id FROM dragon WHERE "isPublic" = TRUE`,
+        (error, response) => {
+          if (error) {
+            return reject(error);
+          };
+
+          const publicDragonRows = response.rows;
+
+          console.log("publicDragonRows-----", publicDragonRows);
+
+          let dragons = Promise.all(publicDragonRows.map(
+            ({ id }) => {
+              return getDragonWithTraits({ dragonId: id })
+            }))
+
+          resolve(dragons);
+        }
+      )
+    })
+    console.log("publicDragonPromises", publicDragonPromises)
+    return publicDragonPromises
+  } catch (error) {
+    reject(error);
+  }
+}
 
 
-module.exports = { getDragonWithTraits };
+module.exports = { getDragonWithTraits, getPublicDragons };
