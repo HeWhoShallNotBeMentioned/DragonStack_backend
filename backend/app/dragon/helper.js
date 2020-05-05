@@ -41,8 +41,6 @@ const getPublicDragons = async () => {
 
           const publicDragonRows = response.rows;
 
-          console.log("publicDragonRows-----", publicDragonRows);
-
           let dragons = Promise.all(publicDragonRows.map(
             ({ id }) => {
               return getDragonWithTraits({ dragonId: id })
@@ -52,7 +50,7 @@ const getPublicDragons = async () => {
         }
       )
     })
-    console.log("publicDragonPromises", publicDragonPromises)
+
     return publicDragonPromises
   } catch (error) {
     reject(error);

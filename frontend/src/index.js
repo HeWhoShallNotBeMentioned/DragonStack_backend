@@ -12,6 +12,7 @@ import rootReducer from './reducers/index.js';
 import { fetchAuthentiated } from './actions/account';
 import './index.css';
 
+
 const history = createBrowserHistory();
 
 const store = createStore(
@@ -21,6 +22,8 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
+
+
 
 const AuthRoute = (props) => {
   if (!store.getState().account.loggedIn) {

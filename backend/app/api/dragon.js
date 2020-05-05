@@ -40,8 +40,8 @@ router.put('/update', async (req, res, next) => {
 router.get('/public-dragons', async (req, res, next) => {
   try {
     const dragons = await getPublicDragons();
-    console.log("dragons", dragons)
-    res.json(dragons);
+
+    res.json({ dragons });
 
   } catch (error) {
     next(error);

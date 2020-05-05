@@ -11,7 +11,7 @@ export const fetchDragon = async (dispatch) => {
         message: data.message
       })
     } else {
-      return dispatch({
+      dispatch({
         type: DRAGON.FETCH_SUCCESS,
         dragon: data.dragon
       });
