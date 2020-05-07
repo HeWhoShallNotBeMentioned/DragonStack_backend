@@ -23,7 +23,8 @@ const getDragonWithTraits = async ({ dragonId }) => {
       })
     ])
 
-    return new Dragon({ dragon: dragonPromises[0], dragonId, traits: dragonPromises[1] })
+    const dragon = { dragonId, ...dragonPromises[0], traits: dragonPromises[1] }
+    return new Dragon(dragon)
   } catch (error) {
     console.error(error)
   }

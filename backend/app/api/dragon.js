@@ -48,10 +48,9 @@ router.get('/public-dragons', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/single-dragon/:id', async (req, res, next) => {
   try {
-
-    const { dragon } = await getDragonWithTraits({ dragonId: req.params.id });
+    const dragon = await getDragonWithTraits({ dragonId: req.params.id });
     res.json({ dragon });
   } catch (error) {
     console.error(error);
