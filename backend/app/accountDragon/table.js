@@ -36,16 +36,33 @@ class AccountDragonTable {
   }
 
   static getDragonAccount({ dragonId }) {
-    pool.query(
-      `SELECT "accountId" FROM accountDragon WHERE "dragodId" = $1`,
-      [dragonId],
-      (error, response) => {
-        if (error) {
-          return reject(error);
-        }
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `SELECT "accountId" FROM accountDragon WHERE "dragodId" = $1`,
+        [dragonId],
+        (error, response) => {
+          if (error) {
+            return reject(error);
+          }
 
-        resolve({ accountId: response.rows[0].accountId })
-      })
+          resolve({ accountId: response.rows[0].accountId });
+        })
+    })
+  }
+
+  static updateDragonAccount({ accountId, dragonId }) {
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `UPDATE accountDragon SET "accountId = $1 WHERE "dragonId" = $2`,
+        [accountId, dragonId],
+        (error, response) => {
+          if (error) {
+            return reject(error);
+          }
+
+          resolve();
+        })
+    })
   }
 
 }
