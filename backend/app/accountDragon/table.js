@@ -38,7 +38,7 @@ class AccountDragonTable {
   static getDragonAccount({ dragonId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        `SELECT "accountId" FROM accountDragon WHERE "dragodId" = $1`,
+        `SELECT "accountId" FROM accountDragon WHERE "dragonId" = $1`,
         [dragonId],
         (error, response) => {
           if (error) {
@@ -50,10 +50,10 @@ class AccountDragonTable {
     })
   }
 
-  static updateDragonAccount({ accountId, dragonId }) {
+  static updateDragonAccount({ dragonId, accountId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        `UPDATE accountDragon SET "accountId = $1 WHERE "dragonId" = $2`,
+        `UPDATE accountDragon SET "accountId" = $1 WHERE "dragonId" = $2`,
         [accountId, dragonId],
         (error, response) => {
           if (error) {
@@ -62,7 +62,7 @@ class AccountDragonTable {
 
           resolve();
         })
-    })
+    });
   }
 
 }
