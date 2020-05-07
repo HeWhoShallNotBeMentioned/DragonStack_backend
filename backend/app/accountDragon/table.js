@@ -34,6 +34,20 @@ class AccountDragonTable {
       )
     })
   }
+
+  static getDragonAccount({ dragonId }) {
+    pool.query(
+      `SELECT "accountId" FROM accountDragon WHERE "dragodId" = $1`,
+      [dragonId],
+      (error, response) => {
+        if (error) {
+          return reject(error);
+        }
+
+        resolve({ accountId: response.rows[0].accountId })
+      })
+  }
+
 }
 
 
