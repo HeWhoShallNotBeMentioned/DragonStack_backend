@@ -76,6 +76,7 @@ router.post('/buy', async (req, res, next) => {
     }
 
     const { account, authenticated } = await authenticatedAccount({ sessionString: req.cookies.sessionString });
+    console.log("authenticated", authenticated);
 
     if (!authenticated) {
       throw new Error('Unauthenticated');
