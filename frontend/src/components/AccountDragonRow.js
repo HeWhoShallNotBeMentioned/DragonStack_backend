@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DragonAvatar from './DragonAvatar';
 import { Button } from 'react-bootstrap';
-import { Backend, BACKEND } from '../config';
+import { BACKEND } from '../config';
 import { Next } from 'react-bootstrap/PageItem';
 
 class AccountDragonRow extends Component {
@@ -10,6 +10,7 @@ class AccountDragonRow extends Component {
     nickname: this.props.dragon.nickname,
     isPublic: this.props.dragon.isPublic,
     saleValue: this.props.dragon.saleValue,
+    sireValue: this.props.dragon.sireValue,
     edit: false
   }
 
@@ -19,6 +20,10 @@ class AccountDragonRow extends Component {
 
   updateSaleValue = event => {
     this.setState({ saleValue: event.target.value });
+  }
+
+  updateSireValue = event => {
+    this.setState({ sireValue: event.target.value });
   }
 
   updateIsPublic = event => {
@@ -38,6 +43,7 @@ class AccountDragonRow extends Component {
           dragonId: this.props.dragon.dragonId,
           nickname: this.state.nickname,
           saleValue: this.state.saleValue,
+          sireValue: this.state.sireValue,
           isPublic: this.state.isPublic
         })
       })
@@ -89,6 +95,16 @@ class AccountDragonRow extends Component {
             value={this.state.saleValue}
             onChange={this.updateSaleValue}
             disabled={!this.state.edit}
+            className="account-dragon-row-input"
+          />
+          {'   '}
+          <span> Sire Value:{'  '} </span>
+          <input
+            type="number"
+            value={this.state.sireValue}
+            onChange={this.updateSireValue}
+            disabled={!this.state.edit}
+            className="account-dragon-row-input"
           />
           {'   '}
           <span>

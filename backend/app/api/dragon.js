@@ -30,6 +30,7 @@ router.get('/new', async (req, res, next) => {
 router.put('/update', async (req, res, next) => {
   try {
     const { dragonId, nickname, isPublic, saleValue, sireValue } = req.body;
+    console.log("sireValue", sireValue)
     const somethingNotUsed = await DragonTable.updateDragon({ dragonId, nickname, isPublic, saleValue, sireValue });
     res.json({ message: 'successfully updated dragon' })
   } catch (error) {
