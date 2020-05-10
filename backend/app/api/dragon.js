@@ -4,6 +4,7 @@ const { getDragonWithTraits, getPublicDragons } = require('../dragon/helper');
 const AccountTable = require('../account/table');
 const { authenticatedAccount } = require('./helper');
 const AccountDragonTable = require('../accountDragon/table');
+const Breeder = require('../dragon/breeder');
 
 const router = new Router();
 
@@ -116,5 +117,74 @@ router.post('/buy', async (req, res, next) => {
   }
 
 })
+
+router.post('/mate', async (req, res, next) => {
+  try {
+    const { matronDragonId, patronDragonId } = req.body;
+
+    if (matronDragonId === patronDragonId) {
+      throw new Error('Cannot breed with the same dragon!');
+    }
+
+    let matronDragon, patronDragon, patronSireValue;
+    let matronAccountId, patronAccountId;
+
+    let dragon = await getDragonWithTraits({ dragonId: patronDragonId })
+
+    if (!dragon.isPublic) {
+      throw new Error('Dragon must be public');
+    }
+
+    patronDragon = dragon;
+    patronSireValue = dragon.sireValue;
+
+    dragon = await getDragonWithTraits({ dragonId: matronDragonId })
+
+    matronDragon = dragon;
+
+    let { account, authenticated } = await authenticatedAccount({ sessionString: req.cookies.sessionString });
+
+    if (!authenticated) throw new Error('Unauthenticated');
+
+    if (patronSireValue > account.balance) {
+      throw new Error('Sire value exceeds balance');
+    }
+
+    matronAccountId = account.id;
+
+    let { accountId } = await AccountDragonTable.getDragonAccount({ dragonId: patronDragonId });
+
+
+    patronAccountId = accountId;
+
+    if (matronAccountId === patronAccountId) {
+      throw new Error('Cannot breed your own dragons!');
+    }
+
+    dragon = await Breeder.breedDragon({ matron: matronDragon, patron: patronDragon });
+
+    let { dragonId } = await DragonTable.storeDragon(dragon);
+
+    let nothingReturned = await
+      Promise.all([
+        AccountTable.updateBalance({
+          accountId: matronAccountId, value: -patronSireValue
+        }),
+        AccountTable.updateBalance({
+          accountId: patronAccountId, value: patronSireValue
+        }),
+        AccountDragonTable.storeAccountDragon({
+          dragonId, accountId: matronAccountId
+        })
+      ])
+
+    res.json({ message: 'success!' })
+
+  } catch (error) {
+    next(error);
+  }
+
+
+});
 
 module.exports = router;
