@@ -15,7 +15,6 @@ router.get('/new', async (req, res, next) => {
     accountId = account.id;
     dragon = await req.app.locals.engine.generation.newDragon();
     const { dragonId } = await DragonTable.storeDragon(dragon);
-    console.log('dragonId--- ', dragonId);
     let nothingReturned = await AccountDragonTable.storeAccountDragon({ accountId, dragonId })
     dragon.dragonId = dragonId;
 
@@ -30,8 +29,8 @@ router.get('/new', async (req, res, next) => {
 
 router.put('/update', async (req, res, next) => {
   try {
-    const { dragonId, nickname, isPublic, saleValue } = req.body;
-    const somethingNotUsed = await DragonTable.updateDragon({ dragonId, nickname, isPublic, saleValue });
+    const { dragonId, nickname, isPublic, saleValue, sireValue } = req.body;
+    const somethingNotUsed = await DragonTable.updateDragon({ dragonId, nickname, isPublic, saleValue, sireValue });
     res.json({ message: 'successfully updated dragon' })
   } catch (error) {
     next(error)
@@ -65,7 +64,6 @@ router.post('/buy', async (req, res, next) => {
     let buyerId;
 
     const dragon = await DragonTable.getDragon({ dragonId })
-    console.log(dragon.saleValue)
 
     if (dragon.saleValue !== saleValue) {
       throw new Error('Sale value is not correct.')

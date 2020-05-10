@@ -15,7 +15,7 @@ class Breeder {
         trait => trait.traitType === traitType
       ).traitValue;
 
-      //const patronTrait = patronTraits[traitType];
+
       console.log(patronTrait);
 
       babyTraits.push({
@@ -54,14 +54,5 @@ class Breeder {
   }
 }
 
-const fooby = new Dragon();
-const gooby = new Dragon();
-
-console.log("fooby ", fooby);
-console.log("gooby  ", gooby);
-
-const foogooby = Breeder.breedDragon({ matron: fooby, patron: gooby });
-
-console.log("foogooby  ", foogooby);
 
 module.exports = Breeder;
