@@ -6,6 +6,12 @@ import history from '../history';
 
 
 class PublicDragonRow extends Component {
+  state = { displayMatingOptions: false }
+
+  toggleDisplayMatingOptions = () => {
+    this.setState({ displayMatingOptions: !this.state.displayMatingOptions });
+  }
+
 
   buy = async () => {
     try {
@@ -39,9 +45,21 @@ class PublicDragonRow extends Component {
       <div>
         <div>{this.props.dragon.nickname}</div>
         <DragonAvatar dragon={this.props.dragon} />
-        <div>Sale Value: {this.props.dragon.saleValue}</div>
+        <div>
+          <span>Sale Value: {this.props.dragon.saleValue}</span>{' | '}
+          <span>Sire Value: {this.props.dragon.sireValue}</span>
+
+        </div>
         <br />
-        <Button onClick={this.buy} >Buy</Button>
+        <Button onClick={this.buy} variant="success">Buy</Button>{'   '}
+        <Button onClick={this.toggleDisplayMatingOptions} variant="info"  >Sire</Button>
+        <br />
+
+        {
+          this.state.displayMatingOptions ?
+            <div>Mating Options</div> :
+            <div></div>
+        }
       </div>
     );
   }
