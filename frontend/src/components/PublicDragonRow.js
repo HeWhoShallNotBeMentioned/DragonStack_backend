@@ -58,7 +58,7 @@ class PublicDragonRow extends Component {
 
         {
           this.state.displayMatingOptions ?
-            <MatingOptions /> :
+            <MatingOptions patronDragonId={this.props.dragon.dragonId} /> :
             <div></div>
         }
       </div>

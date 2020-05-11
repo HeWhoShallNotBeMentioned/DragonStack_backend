@@ -26,6 +26,7 @@ class MatingOptions extends Component {
   }
 
   render() {
+    console.log("this.props-----------------  ", this.props)
     return (
       <div>
         <h4>Pick one of your dragons to mate with:</h4>
