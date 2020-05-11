@@ -14,7 +14,7 @@ router.get('/new', async (req, res, next) => {
 
     let { account } = await authenticatedAccount({ sessionString: req.cookies.sessionString });
     accountId = account.id;
-    dragon = await req.app.locals.engine.generation.newDragon();
+    dragon = await req.app.locals.engine.generation.newDragon({ accountId });
     const { dragonId } = await DragonTable.storeDragon(dragon);
     let nothingReturned = await AccountDragonTable.storeAccountDragon({ accountId, dragonId })
     dragon.dragonId = dragonId;
