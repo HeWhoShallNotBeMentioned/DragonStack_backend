@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import DragonAvatar from './DragonAvatar';
+import MatingOptions from './MatingOptions';
 import { BACKEND } from '../config';
 import history from '../history';
 
@@ -57,7 +58,7 @@ class PublicDragonRow extends Component {
 
         {
           this.state.displayMatingOptions ?
-            <div>Mating Options</div> :
+            <MatingOptions /> :
             <div></div>
         }
       </div>
