@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/HeWhoShallNotBeMentioned/DragonStack#readme",
   "dependencies": {
+    "foreman": "^3.0.1",
     "parcel": "^1.12.4"
   }
 }

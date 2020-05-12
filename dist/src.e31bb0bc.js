@@ -53565,7 +53565,7 @@ store.dispatch((0, _account.fetchAuthentiated)()).then(function () {
     component: _PublicDragons.default
   })))), document.getElementById('root'));
 });
-},{"react":"../node_modules/react/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-dom":"../node_modules/react-dom/index.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","redux-logger":"../node_modules/redux-logger/dist/redux-logger.js","./history":"history.js","./components/Root":"components/Root.js","./components/AccountDragons":"components/AccountDragons.js","./components/PublicDragons":"components/PublicDragons.js","./reducers/index.js":"reducers/index.js","./actions/account":"actions/account.js","./index.css":"index.css"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-dom":"../node_modules/react-dom/index.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","redux-logger":"../node_modules/redux-logger/dist/redux-logger.js","./history":"history.js","./components/Root":"components/Root.js","./components/AccountDragons":"components/AccountDragons.js","./components/PublicDragons":"components/PublicDragons.js","./reducers/index.js":"reducers/index.js","./actions/account":"actions/account.js","./index.css":"index.css"}],"../../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -53593,7 +53593,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60692" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64320" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -53769,5 +53769,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../node_modules/parcel/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/src.e31bb0bc.js.map
