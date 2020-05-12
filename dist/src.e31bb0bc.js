@@ -3876,9 +3876,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ReactReduxContext =
-/*#__PURE__*/
-_react.default.createContext(null);
+var ReactReduxContext = /*#__PURE__*/_react.default.createContext(null);
 
 exports.ReactReduxContext = ReactReduxContext;
 
@@ -3996,9 +3994,7 @@ function createListenerCollection() {
   };
 }
 
-var Subscription =
-/*#__PURE__*/
-function () {
+var Subscription = /*#__PURE__*/function () {
   function Subscription(store, parentSub) {
     this.store = store;
     this.parentSub = parentSub;
@@ -5228,9 +5224,7 @@ function createConnect(_temp) {
   };
 }
 
-var _default =
-/*#__PURE__*/
-createConnect();
+var _default = /*#__PURE__*/createConnect();
 
 exports.default = _default;
 },{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","../components/connectAdvanced":"../node_modules/react-redux/es/components/connectAdvanced.js","../utils/shallowEqual":"../node_modules/react-redux/es/utils/shallowEqual.js","./mapDispatchToProps":"../node_modules/react-redux/es/connect/mapDispatchToProps.js","./mapStateToProps":"../node_modules/react-redux/es/connect/mapStateToProps.js","./mergeProps":"../node_modules/react-redux/es/connect/mergeProps.js","./selectorFactory":"../node_modules/react-redux/es/connect/selectorFactory.js"}],"../node_modules/react-redux/es/hooks/useReduxContext.js":[function(require,module,exports) {
@@ -5323,9 +5317,7 @@ function createStoreHook(context) {
  */
 
 
-var useStore =
-/*#__PURE__*/
-createStoreHook();
+var useStore = /*#__PURE__*/createStoreHook();
 exports.useStore = useStore;
 },{"react":"../node_modules/react/index.js","../components/Context":"../node_modules/react-redux/es/components/Context.js","./useReduxContext":"../node_modules/react-redux/es/hooks/useReduxContext.js"}],"../node_modules/react-redux/es/hooks/useDispatch.js":[function(require,module,exports) {
 "use strict";
@@ -5380,9 +5372,7 @@ function createDispatchHook(context) {
  */
 
 
-var useDispatch =
-/*#__PURE__*/
-createDispatchHook();
+var useDispatch = /*#__PURE__*/createDispatchHook();
 exports.useDispatch = useDispatch;
 },{"../components/Context":"../node_modules/react-redux/es/components/Context.js","./useStore":"../node_modules/react-redux/es/hooks/useStore.js"}],"../node_modules/react-redux/es/hooks/useSelector.js":[function(require,module,exports) {
 "use strict";
@@ -5529,9 +5519,7 @@ function createSelectorHook(context) {
  */
 
 
-var useSelector =
-/*#__PURE__*/
-createSelectorHook();
+var useSelector = /*#__PURE__*/createSelectorHook();
 exports.useSelector = useSelector;
 },{"react":"../node_modules/react/index.js","./useReduxContext":"../node_modules/react-redux/es/hooks/useReduxContext.js","../utils/Subscription":"../node_modules/react-redux/es/utils/Subscription.js","../utils/useIsomorphicLayoutEffect":"../node_modules/react-redux/es/utils/useIsomorphicLayoutEffect.js","../components/Context":"../node_modules/react-redux/es/components/Context.js"}],"../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 /** @license React v0.19.0
@@ -10132,7 +10120,7 @@ if ("development" !== "production") {
       }
 
       var eventName = 'on' + eventNameSuffix;
-      var isSupported = eventName in document;
+      var isSupported = (eventName in document);
 
       if (!isSupported) {
         var element = document.createElement('div');
@@ -32959,9 +32947,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 
   var contextProp = '__create-react-context-' + (0, _gud.default)() + '__';
 
-  var Provider =
-  /*#__PURE__*/
-  function (_Component) {
+  var Provider = /*#__PURE__*/function (_Component) {
     (0, _inheritsLoose2.default)(Provider, _Component);
 
     function Provider() {
@@ -33013,9 +32999,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 
   Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[contextProp] = _propTypes.default.object.isRequired, _Provider$childContex);
 
-  var Consumer =
-  /*#__PURE__*/
-  function (_Component2) {
+  var Consumer = /*#__PURE__*/function (_Component2) {
     (0, _inheritsLoose2.default)(Consumer, _Component2);
 
     function Consumer() {
@@ -33570,18 +33554,14 @@ var createNamedContext = function createNamedContext(name) {
   return context;
 };
 
-var context =
-/*#__PURE__*/
-createNamedContext("Router");
+var context = /*#__PURE__*/createNamedContext("Router");
 /**
  * The public API for putting history on context.
  */
 
 exports.__RouterContext = context;
 
-var Router =
-/*#__PURE__*/
-function (_React$Component) {
+var Router = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Router, _React$Component);
 
   Router.computeRootMatch = function computeRootMatch(pathname) {
@@ -33672,9 +33652,7 @@ if ("development" !== "production") {
  */
 
 
-var MemoryRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var MemoryRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(MemoryRouter, _React$Component);
 
   function MemoryRouter() {
@@ -33717,9 +33695,7 @@ if ("development" !== "production") {
   };
 }
 
-var Lifecycle =
-/*#__PURE__*/
-function (_React$Component) {
+var Lifecycle = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Lifecycle, _React$Component);
 
   function Lifecycle() {
@@ -33965,9 +33941,7 @@ function evalChildrenDev(children, props, path) {
  */
 
 
-var Route =
-/*#__PURE__*/
-function (_React$Component) {
+var Route = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Route, _React$Component);
 
   function Route() {
@@ -34076,9 +34050,7 @@ function noop() {}
  */
 
 
-var StaticRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var StaticRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(StaticRouter, _React$Component);
 
   function StaticRouter() {
@@ -34172,9 +34144,7 @@ if ("development" !== "production") {
  */
 
 
-var Switch =
-/*#__PURE__*/
-function (_React$Component) {
+var Switch = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Switch, _React$Component);
 
   function Switch() {
@@ -34362,9 +34332,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * The public API for a <Router> that uses HTML5 history.
  */
-var BrowserRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var BrowserRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(BrowserRouter, _React$Component);
 
   function BrowserRouter() {
@@ -34411,9 +34379,7 @@ if ("development" !== "production") {
  */
 
 
-var HashRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var HashRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(HashRouter, _React$Component);
 
   function HashRouter() {
@@ -36122,9 +36088,7 @@ function uncontrollable(Component, controlledValues, methods) {
   var PROPS_TO_OMIT = controlledProps.map(Utils.defaultKey);
   !(canAcceptRef || !methods.length) ? "development" !== "production" ? (0, _invariant.default)(false, '[uncontrollable] stateless function components cannot pass through methods ' + 'because they have no associated instances. Check component: ' + displayName + ', ' + 'attempting to pass through methods: ' + methods.join(', ')) : (0, _invariant.default)(false) : void 0;
 
-  var UncontrolledComponent =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var UncontrolledComponent = /*#__PURE__*/function (_React$Component) {
     (0, _inheritsLoose2.default)(UncontrolledComponent, _React$Component);
 
     function UncontrolledComponent() {
@@ -37002,9 +36966,7 @@ var EXITING = 'exiting';
 
 exports.EXITING = EXITING;
 
-var Transition =
-/*#__PURE__*/
-function (_React$Component) {
+var Transition = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Transition, _React$Component);
 
   function Transition(props, context) {
@@ -37599,9 +37561,7 @@ var defaultProps = {
   getDimensionValue: getDimensionValue
 };
 
-var Collapse =
-/*#__PURE__*/
-function (_React$Component) {
+var Collapse = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Collapse, _React$Component);
 
   function Collapse() {
@@ -38868,9 +38828,7 @@ var defaultProps = {
   touch: true
 };
 
-var Carousel =
-/*#__PURE__*/
-function (_React$Component) {
+var Carousel = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Carousel, _React$Component);
 
   function Carousel() {
@@ -45230,9 +45188,7 @@ function findIndexOf(arr, cb) {
  */
 
 
-var ModalManager =
-/*#__PURE__*/
-function () {
+var ModalManager = /*#__PURE__*/function () {
   function ModalManager(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         _ref$hideSiblingNodes = _ref.hideSiblingNodes,
@@ -45492,9 +45448,7 @@ var manager;
  * React hierarchy (such as the default: document.body).
  */
 
-var Modal =
-/*#__PURE__*/
-function (_React$Component) {
+var Modal = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Modal, _React$Component);
 
   function Modal() {
@@ -45987,9 +45941,7 @@ var Selector = {
   NAVBAR_TOGGLER: '.navbar-toggler'
 };
 
-var BootstrapModalManager =
-/*#__PURE__*/
-function (_ModalManager) {
+var BootstrapModalManager = /*#__PURE__*/function (_ModalManager) {
   (0, _inheritsLoose2.default)(BootstrapModalManager, _ModalManager);
 
   function BootstrapModalManager() {
@@ -46309,9 +46261,7 @@ function BackdropTransition(props) {
 /* eslint-enable no-use-before-define */
 
 
-var Modal =
-/*#__PURE__*/
-function (_React$Component) {
+var Modal = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Modal, _React$Component);
 
   function Modal() {
@@ -47609,9 +47559,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var RefHolder =
-/*#__PURE__*/
-function (_React$Component) {
+var RefHolder = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(RefHolder, _React$Component);
 
   function RefHolder() {
@@ -47844,9 +47792,7 @@ function createButton(name, defaultValue, label) {
     label = name;
   }
 
-  return _temp = _class =
-  /*#__PURE__*/
-  function (_React$Component) {
+  return _temp = _class = /*#__PURE__*/function (_React$Component) {
     (0, _inheritsLoose2.default)(_class, _React$Component);
 
     function _class() {
@@ -48705,9 +48651,7 @@ var _TabPane = _interopRequireDefault(require("./TabPane"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable react/require-render-return, react/no-unused-prop-types */
-var Tab =
-/*#__PURE__*/
-function (_React$Component) {
+var Tab = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Tab, _React$Component);
 
   function Tab() {
@@ -53593,7 +53537,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64320" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55444" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
