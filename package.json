@@ -8,7 +8,7 @@
     "backend": "nodemon backend/bin/server",
     "frontend": "parcel frontend/src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install && cd client && npm install --only-dev && npm install && npm run build"
+    "heroku-postbuild": "npm install && cd dist && npm install --only-dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
