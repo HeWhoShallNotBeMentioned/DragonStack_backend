@@ -29,6 +29,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "foreman": "^3.0.1",
-    "parcel": "^1.12.4"
+    "parcel": "^1.12.4",
+    "react": "^16.13.1"
   }
 }
