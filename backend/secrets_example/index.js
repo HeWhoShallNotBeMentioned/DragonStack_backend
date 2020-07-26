@@ -1,3 +1,3 @@
-const APP_SECRET = 'MONTY19/Lily17&%$^~|';
+const APP_SECRET = 'string';
 
 module.exports = { APP_SECRET };
