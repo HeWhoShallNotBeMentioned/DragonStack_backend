@@ -1,6 +1,8 @@
 CREATE TABLE account
 (
   id SERIAL PRIMARY KEY,
-  username CHARACTER(64),
-  password CHARACTER(64)
+  "usernameHash" CHARACTER(64),
+  "passwordHash" CHARACTER(64),
+  "sessionId" CHARACTER(36),
+  balance INTEGER NOT NULL
 );
