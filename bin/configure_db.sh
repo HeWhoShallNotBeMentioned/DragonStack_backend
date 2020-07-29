@@ -2,15 +2,15 @@
 
 echo "Configuring dragonstackdb"
 
-dropdb -U node_user dragonstackdb;
-createdb -U node_user dragonstackdb;
+dropdb -U process.env.USER process.env.DATABASE;
+createdb -U process.env.USER process.env.DATABASE;
 
-psql -U node_user dragonstackdb < ./bin/sql/account.sql;
-psql -U node_user dragonstackdb < ./bin/sql/generation.sql;
-psql -U node_user dragonstackdb < ./bin/sql/dragon.sql;
-psql -U node_user dragonstackdb < ./bin/sql/trait.sql;
-psql -U node_user dragonstackdb < ./bin/sql/dragonTrait.sql;
-psql -U node_user dragonstackdb < ./bin/sql/accountDragon.sql;
+psql -U process.env.USER process.env.DATABASE < ./bin/sql/account.sql;
+psql -U process.env.USER process.env.DATABASE < ./bin/sql/generation.sql;
+psql -U process.env.USER process.env.DATABASE < ./bin/sql/dragon.sql;
+psql -U process.env.USER process.env.DATABASE < ./bin/sql/trait.sql;
+psql -U process.env.USER process.env.DATABASE < ./bin/sql/dragonTrait.sql;
+psql -U process.env.USER process.env.DATABASE < ./bin/sql/accountDragon.sql;
 
 node ./bin/insertTraits.js
 
