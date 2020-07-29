@@ -2,8 +2,8 @@
 
 echo "Configuring dragonstackdb"
 
-dropdb -U qxpzphuzpuciha d9a8dtcvdo2kp0;
-createdb -U qxpzphuzpuciha d9a8dtcvdo2kp0;
+# dropdb -U qxpzphuzpuciha d9a8dtcvdo2kp0;
+# createdb -U qxpzphuzpuciha d9a8dtcvdo2kp0;
 
 psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/account.sql;
 psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/generation.sql;
