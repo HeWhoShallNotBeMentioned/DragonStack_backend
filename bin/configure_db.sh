@@ -2,15 +2,15 @@
 
 echo "Configuring dragonstackdb"
 
-# dropdb -U qxpzphuzpuciha d9a8dtcvdo2kp0;
-# createdb -U qxpzphuzpuciha d9a8dtcvdo2kp0;
+ dropdb -U node_user dragonstackdb;
+ createdb -U node_user dragonstackdb;
 
-psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/account.sql;
-psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/generation.sql;
-psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/dragon.sql;
-psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/trait.sql;
-psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/dragonTrait.sql;
-psql -U qxpzphuzpuciha d9a8dtcvdo2kp0 < ./bin/sql/accountDragon.sql;
+psql -U node_user dragonstackdb < ./bin/sql/account.sql;
+psql -U node_user dragonstackdb < ./bin/sql/generation.sql;
+psql -U node_user dragonstackdb < ./bin/sql/dragon.sql;
+psql -U node_user dragonstackdb < ./bin/sql/trait.sql;
+psql -U node_user dragonstackdb < ./bin/sql/dragonTrait.sql;
+psql -U node_user dragonstackdb < ./bin/sql/accountDragon.sql;
 
 node ./bin/insertTraits.js
 
