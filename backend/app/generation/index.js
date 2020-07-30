@@ -1,7 +1,7 @@
-const { REFRESH_RATE, SECOND } = require('../config');
+const { REFRESH_RATE, SECOND, MINUTE, HOUR, DAY } = require('../config');
 const Dragon = require('../dragon');
 
-const refreshRate = REFRESH_RATE * SECOND;
+const refreshRate = REFRESH_RATE * SECOND * MINUTE * HOUR;
 
 class Generation {
   constructor() {
@@ -29,7 +29,7 @@ class Generation {
     if (this.accountIds.has(accountId)) {
       throw new Error('You already have a dragon from this generation.');
     }
-    this.accountIds.add(accountId)
+    this.accountIds.add(accountId);
 
     return new Dragon({ generationId: this.generationId });
   }
