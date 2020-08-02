@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
@@ -22,6 +23,9 @@ app.use(
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+// Set static folder
+app.use(express.static('public'));
 
 app.use('/account/', accountRouter);
 app.use('/dragon/', dragonRouter);
