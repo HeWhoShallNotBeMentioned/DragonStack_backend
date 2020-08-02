@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use('/account/', accountRouter);
 app.use('/dragon/', dragonRouter);
