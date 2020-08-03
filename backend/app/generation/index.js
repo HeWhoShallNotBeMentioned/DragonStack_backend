@@ -1,7 +1,7 @@
 const { REFRESH_RATE, SECOND, MINUTE, HOUR, DAY } = require('../config');
 const Dragon = require('../dragon');
 
-const refreshRate = REFRESH_RATE * SECOND * MINUTE;
+const refreshRate = REFRESH_RATE * SECOND;
 
 class Generation {
   constructor() {
