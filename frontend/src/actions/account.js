@@ -6,7 +6,7 @@ export const fetchFromAccount = ({
   options,
   FETCH_TYPE,
   ERROR_TYPE,
-  SUCCESS_TYPE
+  SUCCESS_TYPE,
 }) => dispatch => {
   dispatch({ type: FETCH_TYPE });
 
@@ -19,50 +19,56 @@ export const fetchFromAccount = ({
         dispatch({ type: SUCCESS_TYPE, ...json });
       }
     })
-    .catch(error => dispatch({
-      type: ERROR_TYPE, message: error.message
-    }));
-}
+    .catch(error =>
+      dispatch({
+        type: ERROR_TYPE,
+        message: error.message,
+      })
+    );
+};
 
-export const signup = ({ username, password }) => fetchFromAccount({
-  endpoint: 'signup',
-  options: {
-    method: 'POST',
-    body: JSON.stringify({ username, password }),
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include'
-  },
-  FETCH_TYPE: ACCOUNT.FETCH,
-  ERROR_TYPE: ACCOUNT.FETCH_ERROR,
-  SUCCESS_TYPE: ACCOUNT.FETCH_SUCCESS
-});
+export const signup = ({ username, password }) =>
+  fetchFromAccount({
+    endpoint: 'signup',
+    options: {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    },
+    FETCH_TYPE: ACCOUNT.FETCH,
+    ERROR_TYPE: ACCOUNT.FETCH_ERROR,
+    SUCCESS_TYPE: ACCOUNT.FETCH_SUCCESS,
+  });
 
-export const login = ({ username, password }) => fetchFromAccount({
-  endpoint: 'login',
-  options: {
-    method: 'POST',
-    body: JSON.stringify({ username, password }),
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include'
-  },
-  FETCH_TYPE: ACCOUNT.FETCH,
-  ERROR_TYPE: ACCOUNT.FETCH_ERROR,
-  SUCCESS_TYPE: ACCOUNT.FETCH_SUCCESS
-});
+export const login = ({ username, password }) =>
+  fetchFromAccount({
+    endpoint: 'login',
+    options: {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    },
+    FETCH_TYPE: ACCOUNT.FETCH,
+    ERROR_TYPE: ACCOUNT.FETCH_ERROR,
+    SUCCESS_TYPE: ACCOUNT.FETCH_SUCCESS,
+  });
 
-export const logout = () => fetchFromAccount({
-  endpoint: 'logout',
-  options: { credentials: 'include' },
-  FETCH_TYPE: ACCOUNT.FETCH,
-  ERROR_TYPE: ACCOUNT.FETCH_ERROR,
-  SUCCESS_TYPE: ACCOUNT.FETCH_LOGOUT_SUCCESS
-});
+export const logout = () =>
+  fetchFromAccount({
+    endpoint: 'logout',
+    options: { credentials: 'include' },
+    FETCH_TYPE: ACCOUNT.FETCH,
+    ERROR_TYPE: ACCOUNT.FETCH_ERROR,
+    SUCCESS_TYPE: ACCOUNT.FETCH_LOGOUT_SUCCESS,
+  });
 
-export const fetchAuthentiated = () => fetchFromAccount({
-  endpoint: 'authenticated',
-  options: { credentials: 'include' },
-  FETCH_TYPE: ACCOUNT.FETCH,
-  ERROR_TYPE: ACCOUNT.FETCH_ERROR,
-  SUCCESS_TYPE: ACCOUNT.FETCH_AUTHENTICATED_SUCCESS,
-})
-
+export const fetchAuthentiated = () =>
+  fetchFromAccount({
+    endpoint: 'authenticated',
+    options: { credentials: 'include' },
+    FETCH_TYPE: ACCOUNT.FETCH,
+    ERROR_TYPE: ACCOUNT.FETCH_ERROR,
+    SUCCESS_TYPE: ACCOUNT.FETCH_AUTHENTICATED_SUCCESS,
+  });
