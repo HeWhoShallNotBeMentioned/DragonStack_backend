@@ -14,7 +14,16 @@ const engine = new GenerationEngine();
 
 app.locals.engine = engine;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:5100',
+      'dragonstack-frontend-react-app.herokuapp.com',
+    ],
+    credentials: true,
+  })
+);
 
 app.use(bodyParser.json());
 app.use(cookieParser());
