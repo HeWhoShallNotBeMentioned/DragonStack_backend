@@ -21,7 +21,7 @@ app.use(
       'http://localhost:5100',
       'dragonstack-frontend-react-app.herokuapp.com',
     ],
-    credentials: true,
+    credentials: false,
   })
 );
 
