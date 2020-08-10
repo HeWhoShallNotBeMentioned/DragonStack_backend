@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const cors = require('cors');
 const AccountTable = require('../account/table');
 const AccountDragonTable = require('../accountDragon/table');
 const Session = require('../account/session');
@@ -8,7 +9,7 @@ const { getDragonWithTraits } = require('../dragon/helper');
 
 const router = new Router();
 
-router.post('/signup', async (req, res, next) => {
+router.post('/signup', cors(), async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const usernameHash = hash(username);
@@ -36,7 +37,7 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', cors(), async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const { account } = await AccountTable.getAccount({
