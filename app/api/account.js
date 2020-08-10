@@ -9,7 +9,7 @@ const { getDragonWithTraits } = require('../dragon/helper');
 
 const router = new Router();
 
-router.post('/signup', cors(), async (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const usernameHash = hash(username);
@@ -37,7 +37,7 @@ router.post('/signup', cors(), async (req, res, next) => {
   }
 });
 
-router.post('/login', cors(), async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const { account } = await AccountTable.getAccount({
