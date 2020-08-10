@@ -14,12 +14,7 @@ const engine = new GenerationEngine();
 
 app.locals.engine = engine;
 
-app.use(
-  cors({
-    origin: ['http://localhost:1234', 'http://localhost:5100'],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(cookieParser());
