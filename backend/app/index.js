@@ -16,7 +16,11 @@ app.locals.engine = engine;
 
 app.use(
   cors({
-    origin: ['http://localhost:1234', 'http://localhost:5100'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:5100',
+      'https://dragonstack-frontend-react-app.herokuapp.com',
+    ],
     credentials: true,
   })
 );

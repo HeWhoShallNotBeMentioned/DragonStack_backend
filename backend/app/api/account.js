@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const cors = require('cors');
 const AccountTable = require('../account/table');
 const AccountDragonTable = require('../accountDragon/table');
 const Session = require('../account/session');
