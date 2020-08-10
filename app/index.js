@@ -19,7 +19,7 @@ app.use(
     origin: [
       'http://localhost:3000',
       'http://localhost:5100',
-      'dragonstack-frontend-react-app.herokuapp.com',
+      'https://dragonstack-frontend-react-app.herokuapp.com',
     ],
     credentials: true,
   })
