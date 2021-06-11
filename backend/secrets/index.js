@@ -1,2 +1,2 @@
-const APP_SECRET = 'MONTY19/Lily17&%$^~|';
+const APP_SECRET = process.env.SECRET_CODE;
 module.exports = { APP_SECRET };

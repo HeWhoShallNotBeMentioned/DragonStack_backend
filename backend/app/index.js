@@ -1,4 +1,6 @@
+//const path = require('path');
 const express = require('express');
+const dotenv = require('dotenv').config();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -14,7 +16,11 @@ app.locals.engine = engine;
 
 app.use(
   cors({
-    origin: ['http://localhost:1234', 'http://localhost:5100'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:5100',
+      'https://dragonstack-frontend-react-app.herokuapp.com',
+    ],
     credentials: true,
   })
 );
@@ -22,6 +28,10 @@ app.use(
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Set static folder
+app.use(express.static('public'));
+
+// Define Route Paths
 app.use('/account/', accountRouter);
 app.use('/dragon/', dragonRouter);
 app.use('/generation/', generationRouter);
@@ -37,32 +47,3 @@ app.use((err, req, res, next) => {
 engine.start();
 
 module.exports = app;
-
-// const Generation = require('./generation');
-
-// const generation = new Generation();
-
-// console.log('generation', generation)
-
-// const oopty = generation.newDragon()
-
-// console.log('oopty', oopty)
-
-// setTimeout(()=> {
-//   const bloop =  generation.newDragon()
-//   console.log("bloop", bloop)
-// }, 3000);
-
-//const Dragon = require('./dragon')
-
-// const fooey = new Dragon({birthdate: new Date(), nickname: 'fooey'});
-// const baloo = new Dragon({birthdate: new Date(), nickname: 'baloo', traits: [{"backgroundColor": "pink"}]});
-// const boop = new Dragon({});
-// console.log("fooey", fooey);
-// console.log("baloo", baloo);
-// console.log("boop", boop);
-
-// setTimeout(()=> {
-//   const oopty = new Dragon({nickname: "oopty"})
-//   console.log("oopty",oopty)
-// }, 2500)
