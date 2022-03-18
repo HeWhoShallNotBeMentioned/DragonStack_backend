@@ -1,7 +1,7 @@
-const { REFRESH_RATE, SECOND, MINUTE, HOUR, DAY } = require('../config');
 const Dragon = require('../dragon');
+const { REFRESH_RATE, SECOND } = require('../config');
 
-const refreshRate = REFRESH_RATE * HOUR;
+const refreshRate = REFRESH_RATE * SECOND;
 
 class Generation {
   constructor() {
@@ -23,12 +23,13 @@ class Generation {
 
   newDragon({ accountId }) {
     if (Date.now() > this.expiration) {
-      throw new Error(`This generation expired on ${this.expiration}.`);
+      throw new Error(`This generation expired on ${this.expiration}`);
     }
 
     if (this.accountIds.has(accountId)) {
-      throw new Error('You already have a dragon from this generation.');
+      throw new Error('You already have a dragon from this generation');
     }
+
     this.accountIds.add(accountId);
 
     return new Dragon({ generationId: this.generationId });

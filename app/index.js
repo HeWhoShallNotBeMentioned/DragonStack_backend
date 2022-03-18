@@ -1,6 +1,6 @@
 //const path = require('path');
 const express = require('express');
-const dotenv = require('dotenv').config();
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -8,6 +8,7 @@ const GenerationEngine = require('./generation/engine');
 const dragonRouter = require('./api/dragon');
 const generationRouter = require('./api/generation');
 const accountRouter = require('./api/account');
+require('dotenv').config();
 const app = express();
 
 const engine = new GenerationEngine();
@@ -45,5 +46,6 @@ app.use((err, req, res, next) => {
 });
 
 engine.start();
+console.log(process.env);
 
 module.exports = app;
